@@ -22,7 +22,7 @@ const MarkdownInput = ({ changeHandler, saveHandler }) => {
         <div>
           <textarea type="text" className="form-control m-2" name="note" rows="15" placeholder="Ta note ici ..." onChange={handleInputChange} />
         </div>
-        <input className="btn btn-primary m-2" type="submit"  value="Sauvegarder ma note" onClick={ (e) => saveHandler(e, input) } />
+        <input className="btn btn-primary m-2" type="submit"  value="Sauvegarder ma note" onClick={ (e) => saveHandler(e) } />
       </form>
     )
   }
