@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const MarkdownInput = ({ changeHandler, saveHandler }) => {
+const MarkdownInput = ({ changeHandler, saveHandler, title, note }) => {
     const [input, setInput] = useState({})
 
     const handleInputChange = (e) => {
@@ -9,7 +9,6 @@ const MarkdownInput = ({ changeHandler, saveHandler }) => {
             [e.currentTarget.name]: e.currentTarget.value
         })
     }
-
     useEffect(() => {
         changeHandler(input)
       }, [input]);
@@ -22,7 +21,7 @@ const MarkdownInput = ({ changeHandler, saveHandler }) => {
         <div>
           <textarea type="text" className="form-control m-2" name="note" rows="15" placeholder="Ta note ici ..." onChange={handleInputChange} />
         </div>
-        <input className="btn btn-primary m-2" type="submit"  value="Sauvegarder ma note" onClick={ (e) => saveHandler(e) } />
+        <input className="btn btn-success m-2" type="reset"  value="Sauvegarder ma note" onClick={ (e) => saveHandler(e) } />
       </form>
     )
   }

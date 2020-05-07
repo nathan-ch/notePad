@@ -10,7 +10,7 @@ const NoteDisplay = ({mdTitle, mdNote}) => {
     return (
      <div className="border-bottom" style={{minHeight:'20em'}}> 
         <h1><div dangerouslySetInnerHTML={{__html: htmlTitle}} /></h1>
-        <div dangerouslySetInnerHTML={{__html: htmlNote}} />
+        <div className="text-break" dangerouslySetInnerHTML={{__html: htmlNote}} />
      </div>
     )
   }

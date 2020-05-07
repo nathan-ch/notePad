@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Archive = ({displayArchive}) => {
+const Archive = ({displayArchive, modify}) => {
   const[counter, setCounter] = useState(0);
   
   let storage=[]
@@ -8,10 +8,8 @@ const Archive = ({displayArchive}) => {
     let key=localStorage.key(i)
     let obj=JSON.parse(localStorage[key])
     obj.push(key)
-    console.log(obj);
     storage.push(obj)
   }
-  console.log(storage);
 
   const handleDelete = (e, key) =>{
     e.preventDefault();
@@ -21,9 +19,14 @@ const Archive = ({displayArchive}) => {
 
     const archivelist = storage.map((note,i) => (
         <div className="border-top mt-2" key={note[2]}>
-            <button className=" btn btn-outline-primary mb-1 mt-3" onClick={ (e) => displayArchive(e, note) } >{note[0]}</button>
-            <br/>
-            <button className="btn btn-danger btn-sm" onClick={ (e) => handleDelete(e, note[2]) } >Supprimer</button>
+            <a className="text-primary" onClick={ (e) => displayArchive(e, note) } ><h4 className="mt-1">{note[0]}</h4></a>
+            <p className="text-break">
+              {note[1].length > 140
+                ? note[1].substring(0, 140) + "..."
+                : note[1]}
+            </p>
+            <button className="btn btn-danger btn-sm mb-3 mr-1" onClick={ (e) => handleDelete(e, note[2]) } >Suppr</button>
+            <button className="btn btn-warning btn-sm mb-3" onClick={ (e) => modify(e, note ) } >Modifier la note</button>
         </div>
     ))    
 
