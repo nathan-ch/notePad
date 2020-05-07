@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Archive = ({displayArchive, modify}) => {
-  const[counter, setCounter] = useState(0);
+const Archive = ({displayArchive, modify, deleteNote}) => {
   
   let storage=[]
   for( let i = 0; i < localStorage.length; i++){
@@ -9,12 +8,6 @@ const Archive = ({displayArchive, modify}) => {
     let obj=JSON.parse(localStorage[key])
     obj.push(key)
     storage.push(obj)
-  }
-
-  const handleDelete = (e, key) =>{
-    e.preventDefault();
-    localStorage.removeItem(key);
-    setCounter(counter+1)
   }
 
     const archivelist = storage.map((note,i) => (
@@ -25,7 +18,7 @@ const Archive = ({displayArchive, modify}) => {
                 ? note[1].substring(0, 140) + "..."
                 : note[1]}
             </p>
-            <button className="btn btn-danger btn-sm mb-3 mr-1" onClick={ (e) => handleDelete(e, note[2]) } >Suppr</button>
+            <button className="btn btn-danger btn-sm mb-3 mr-1" onClick={ (e) => deleteNote(e, note[2]) } >Suppr</button>
             <button className="btn btn-warning btn-sm mb-3" onClick={ (e) => modify(e, note ) } >Modifier la note</button>
         </div>
     ))    

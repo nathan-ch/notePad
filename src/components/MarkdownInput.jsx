@@ -16,10 +16,10 @@ const MarkdownInput = ({ changeHandler, saveHandler, title, note }) => {
     return (
       <form>
         <div>
-          <input type="text" className="form-control m-2" name="title" placeholder="Le titre de ta note ici ..." onChange={handleInputChange} />
+          <input type="text" className="form-control m-2" name="title" value={title} placeholder="Le titre de ta note ici ..." onChange={handleInputChange} />
         </div>
         <div>
-          <textarea type="text" className="form-control m-2" name="note" rows="15" placeholder="Ta note ici ..." onChange={handleInputChange} />
+          <textarea type="text" className="form-control m-2" name="note" rows="15" value={note} placeholder="Ta note ici ..." onChange={handleInputChange} />
         </div>
         <input className="btn btn-success m-2" type="reset"  value="Sauvegarder ma note" onClick={ (e) => saveHandler(e) } />
       </form>
